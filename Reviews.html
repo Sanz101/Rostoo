@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviews – Rosto</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ─── TOP BAR ─── -->
+<nav id="navbar">
+  <div class="nav-left-group">
+    <a href="index.html" class="nav-brand-title">Rosto</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="About.html">About Us</a></li>
+      <li><a href="Destinations.html">Destinations</a></li>
+      <li><a href="Services.html">Services</a></li>
+      <li><a href="Reviews.html" class="active">Reviews</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="nav-right-group">
+    <a href="https://wa.me/94772004795" class="nav-cta-btn" target="_blank">Book Now</a>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── MOBILE FLYOUT MENU ─── -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="About.html">About Us</a>
+  <a href="Destinations.html">Destinations</a>
+  <a href="Services.html">Services</a>
+  <a href="Reviews.html" class="active">Reviews</a>
+  <a href="contact.html">Contact</a>
+  <a href="https://wa.me/94772004795" target="_blank" style="color:var(--md-sys-color-primary); font-weight:600;">Book on WhatsApp</a>
+</div>
+
+<!-- ─── REVIEWS SECTION WITH WATERMARK ─── -->
+<section id="hero" class="page-hero-wrapper" style="min-height: auto; padding-top: 140px; padding-bottom: 80px;">
+  <img src="images/logo.png" alt="" class="faded-bg-logo" aria-hidden="true">
+  <div class="hero-container" style="flex-direction: column; text-align: center; gap: 40px;">
+    <div class="hero-text-content" style="max-width: 800px; margin: 0 auto; align-items: center;">
+      <h1 class="hero-tagline">
+        Traveler <span>Reviews</span>
+      </h1>
+      <p class="hero-sub" style="text-align: center;">
+        Read genuine thoughts and experiences from travelers who explored Sri Lanka’s cultural heart and hill country with us.
+      </p>
+    </div>
+
+    <!-- REVIEWS GRID -->
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Ranjan made our trip to Kandy and Nuwara Eliya completely seamless. His vehicle was spotless and extremely comfortable. Highly recommended!"</p>
+        <h4 class="reviewer-name">— Liam & Sarah, UK</h4>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The airport pickup was right on time despite our late-night flight. Very professional communication and safe driving through the winding mountain roads."</p>
+        <h4 class="reviewer-name">— Marcus V., Germany</h4>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The partner hotel in Kitulgala and the white water rafting adventure booked through Rosto were the highlights of our holiday! Absolutely unforgettable."</p>
+        <h4 class="reviewer-name">— Chloe D., France</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHATSAPP FLOATING BUTTON ─── -->
+<a href="https://wa.me/94772004795" class="whatsapp-float" target="_blank" aria-label="Contact on WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+</a>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-content">
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="Destinations.html">Destinations</a></li>
+      <li><a href="Services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p class="footer-credit">Designed and Engineered by Pasan Nimsara &copy; 2026. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
