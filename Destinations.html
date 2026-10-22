@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#f8fbfb">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Destinations – Rosto</title>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -38,7 +40,7 @@
   <a href="Services.html">Services</a>
   <a href="Reviews.html">Reviews</a>
   <a href="contact.html">Contact</a>
-  <a href="https://wa.me/94772004795" target="_blank" style="color:var(--md-sys-color-primary); font-weight:600;">Book on WhatsApp</a>
+  <a href="https://wa.me/94772004795" target="_blank" class="mobile-cta-link">Book on WhatsApp</a>
 </div>
 
 <!-- ─── DESTINATIONS SECTION ─── -->
@@ -55,45 +57,17 @@
     </div>
 
     <!-- DESTINATIONS GRID -->
-    <div class="destinations-grid">
-      <div class="destination-card">
-        <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=600&q=80" alt="Temple of the Tooth">
-        <div class="destination-info">
-          <h3>Temple of the Sacred Tooth Relic</h3>
-          <p class="distance-tag">Located right in Kandy (0 km)</p>
-          <p>Sri Lanka's most sacred Buddhist shrine, nestled by the scenic Kandy Lake featuring gorgeous traditional architecture and rich cultural heritage.</p>
-        </div>
-      </div>
-
-      <div class="destination-card">
-        <img src="https://images.unsplash.com/photo-1588598111244-b26a63d917ef?auto=format&fit=crop&w=600&q=80" alt="Sigiriya Rock Fortress">
-        <div class="destination-info">
-          <h3>Sigiriya Rock Fortress</h3>
-          <p class="distance-tag">Approx. 90 km from Kandy (2.5 hours drive)</p>
-          <p>An ancient palace and fortress complex sitting atop a massive 200-meter-high rock column surrounded by stunning water gardens and frescoes.</p>
-        </div>
-      </div>
-
-      <div class="destination-card">
-        <img src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=600&q=80" alt="Nuwara Eliya Tea Plantations">
-        <div class="destination-info">
-          <h3>Nuwara Eliya & Tea Gardens</h3>
-          <p class="distance-tag">Approx. 75 km from Kandy (2.5 hours drive)</p>
-          <p>Known as 'Little England', featuring cascading waterfalls, misty green hills, and sprawling world-famous Ceylon tea plantations.</p>
-        </div>
-      </div>
-
-      <div class="destination-card">
-        <img src="https://images.unsplash.com/photo-1578593139886-13d8063013d3?auto=format&fit=crop&w=600&q=80" alt="Kitulgala White Water Rafting">
-        <div class="destination-info">
-          <h3>Kitulgala Adventure Base</h3>
-          <p class="distance-tag">Approx. 55 km from Kandy (1.5 hours drive)</p>
-          <p>The premier location for white water rafting, rainforest trekking, and outdoor adventure sports along the Kelani River.</p>
-        </div>
-      </div>
-    </div>
+    <div class="destinations-grid" id="destinationsGrid"></div>
   </div>
 </section>
+<!-- ─── CALL TO ACTION BAND ─── -->
+<section class="section-wrap" style="padding-top: 0;">
+  <div class="cta-band reveal-on-scroll">
+    <h2>Want help choosing the right route?</h2>
+    <a href="https://wa.me/94772004795" class="btn-expressive-primary" target="_blank">Chat on WhatsApp</a>
+  </div>
+</section>
+
 
 <!-- ─── WHATSAPP FLOATING BUTTON ─── -->
 <a href="https://wa.me/94772004795" class="whatsapp-float" target="_blank" aria-label="Contact on WhatsApp">
@@ -115,5 +89,8 @@
 </footer>
 
 <script src="main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => renderDestinationsGrid('#destinationsGrid'));
+</script>
 </body>
 </html>

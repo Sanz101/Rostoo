@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#f8fbfb">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services – Rosto</title>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -102,22 +104,7 @@
             <h3>Handpicked Partner Accommodations</h3>
             <p>Retreat from the transit into tranquility. Settle into our exclusive network of premium partner hotels nestled amidst the misty hills and scenic landscapes surrounding Kandy.</p>
 
-            <!-- Grouped Thumbnail Preview with Tap to Expand/Modal trigger -->
-            <div class="image-group-preview" onclick="openGalleryModal('hotel')">
-              <div class="main-thumb-wrapper">
-                <img src="images/H1.png" alt="Hotel View Main" loading="lazy">
-                <div class="gallery-overlay-badge">
-                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                  <span>Explore all 6 hotel spaces</span>
-                </div>
-              </div>
-              <div class="sub-thumbs-row">
-                <div class="sub-thumb"><img src="images/H2.png" alt="" loading="lazy"></div>
-                <div class="sub-thumb"><img src="images/H3.png" alt="" loading="lazy"></div>
-                <div class="sub-thumb"><img src="images/H4.png" alt="" loading="lazy"></div>
-                <div class="sub-thumb more-count">+3</div>
-              </div>
-            </div>
+            <div class="image-group-preview" id="hotelPreview"></div>
           </div>
         </div>
       </div>
@@ -133,22 +120,7 @@
             <h3>Adventure Parks & White-Water Rafting</h3>
             <p>Elevate your journey with an injection of excitement. Partnered directly with premier outdoor parks, we take you straight from peaceful valley retreats into roaring river rapids.</p>
 
-            <!-- Grouped Thumbnail Preview with Tap to Expand/Modal trigger -->
-            <div class="image-group-preview" onclick="openGalleryModal('rafting')">
-              <div class="main-thumb-wrapper">
-                <img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=768&q=80" alt="Water Rafting Main" loading="lazy">
-                <div class="gallery-overlay-badge">
-                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                  <span>Explore all 6 adventure frames</span>
-                </div>
-              </div>
-              <div class="sub-thumbs-row">
-                <div class="sub-thumb"><img src="https://images.unsplash.com/photo-1521537634581-0dced2fee2ef?auto=format&fit=crop&w=400&q=80" alt="" loading="lazy"></div>
-                <div class="sub-thumb"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=400&q=80" alt="" loading="lazy"></div>
-                <div class="sub-thumb"><img src="https://images.unsplash.com/photo-1533130061792-64b345e4a833?auto=format&fit=crop&w=400&q=80" alt="" loading="lazy"></div>
-                <div class="sub-thumb more-count">+3</div>
-              </div>
-            </div>
+            <div class="image-group-preview" id="raftingPreview"></div>
           </div>
         </div>
       </div>
@@ -234,53 +206,9 @@
 
 <script src="main.js"></script>
 <script>
-  const galleryData = {
-    hotel: {
-      title: 'Partner Hotel Accommodations Collection',
-      images: ['images/H1.png', 'images/H2.png', 'images/H3.png', 'images/H4.png', 'images/H5.png', 'images/H6.png']
-    },
-    rafting: {
-      title: 'Water Rafting & Adventure Park Collection',
-      images: [
-        'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=768&q=80',
-        'https://images.unsplash.com/photo-1521537634581-0dced2fee2ef?auto=format&fit=crop&w=768&q=80',
-        'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=768&q=80',
-        'https://images.unsplash.com/photo-1533130061792-64b345e4a833?auto=format&fit=crop&w=768&q=80',
-        'https://images.unsplash.com/photo-1544966503-7cc531cb70b8?auto=format&fit=crop&w=768&q=80',
-        'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=768&q=80'
-      ]
-    }
-  };
-
-  function openGalleryModal(type) {
-    const modal = document.getElementById('galleryModal');
-    const title = document.getElementById('modalTitle');
-    const grid = document.getElementById('modalGrid');
-
-    const data = galleryData[type];
-    title.innerText = data.title;
-    grid.innerHTML = '';
-
-    data.images.forEach((src, idx) => {
-      const item = document.createElement('div');
-      item.className = 'modal-img-card';
-      item.style.animationDelay = `${idx * 0.05}s`;
-      item.innerHTML = `<img src="${src}" alt="Gallery image ${idx + 1}" loading="lazy">`;
-      grid.appendChild(item);
-    });
-
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeGalleryModal() {
-    const modal = document.getElementById('galleryModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeGalleryModal();
+  document.addEventListener('DOMContentLoaded', () => {
+    renderImagePreviewGroup('hotelPreview', ROSTO_HOTEL_IMAGES, 'Hotel', 'hotel');
+    renderImagePreviewGroup('raftingPreview', ROSTO_RAFTING_IMAGES, 'Adventure', 'rafting');
   });
 </script>
 </body>

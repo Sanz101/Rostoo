@@ -1,4 +1,5 @@
 :root {
+  color-scheme: only light;
   --md-sys-color-primary: #006874;
   --md-sys-color-on-primary: #ffffff;
   --md-sys-color-primary-container: #9eeafa;
@@ -8,13 +9,12 @@
   --md-sys-color-outline: #6f797b;
   --md-shape-corner-extra-large: 28px;
   --md-shape-corner-full: 9999px;
-  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { 
-  scroll-behavior: smooth; 
-  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -22,6 +22,7 @@ body {
   color: #0f171a;
   font-family: 'Google Sans', 'Roboto', 'DM Sans', sans-serif;
   overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -38,16 +39,14 @@ nav {
   height: 64px;
   padding: 0 24px;
   border-radius: var(--md-shape-corner-full);
-  background: rgba(248, 251, 251, 0.82);
-  backdrop-filter: blur(20px) saturate(1.8);
-  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  background: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(111, 121, 123, 0.15);
   box-shadow: 0 4px 20px rgba(0, 104, 116, 0.05);
-  transition: var(--transition-smooth);
+  transition: background-color 0.35s ease, box-shadow 0.35s ease, top 0.35s ease;
 }
 
 nav.scrolled {
-  background: rgba(248, 251, 251, 0.95);
+  background: #ffffff;
   box-shadow: 0 8px 30px rgba(0, 104, 116, 0.1);
   top: 8px;
 }
@@ -145,9 +144,7 @@ nav.scrolled {
   top: 82px; 
   right: 16px; 
   left: 16px;
-  background: rgba(248, 251, 251, 0.95);
-  backdrop-filter: blur(24px) saturate(1.8);
-  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  background: #ffffff;
   border: 1px solid rgba(111, 121, 123, 0.18);
   box-shadow: 0 16px 40px rgba(0, 104, 116, 0.15);
   border-radius: 24px;
@@ -218,7 +215,7 @@ nav.scrolled {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  flex: 1.1;
+  flex: 1;
   position: relative;
   z-index: 2;
 }
@@ -286,16 +283,16 @@ nav.scrolled {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 0.9;
+  flex: 1;
 }
 
 .hero-logo-balanced {
-  width: 150%;
-  max-width: 520px;
+  width: 120%;
+  max-width: 620px;
   height: auto;
-  filter: drop-shadow(0 24px 48px rgba(0, 104, 116, 0.18));
-  animation: floatSmooth 6s ease-in-out infinite;
+  filter: drop-shadow(0 12px 20px rgba(0, 104, 116, 0.16));
 }
+@media (min-width: 1081px) { .hero-logo-balanced { animation: floatSmooth 6s ease-in-out infinite; } }
 
 @keyframes floatSmooth {
   0%, 100% { transform: translateY(0); }
@@ -344,15 +341,13 @@ nav.scrolled {
 
 .service-graphic-card {
   background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(16px) saturate(1.8);
-  -webkit-backdrop-filter: blur(16px) saturate(1.8);
   border: 1px solid rgba(111, 121, 123, 0.15);
   border-radius: 28px;
   padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  box-shadow: 0 10px 40px rgba(0, 104, 116, 0.06);
+  box-shadow: 0 4px 16px rgba(15, 23, 26, 0.06);
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
@@ -371,7 +366,7 @@ nav.scrolled {
 
 .service-graphic-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 50px rgba(0, 104, 116, 0.12);
+  box-shadow: 0 10px 28px rgba(15, 23, 26, 0.10);
   background: rgba(255, 255, 255, 0.94);
 }
 
@@ -465,8 +460,6 @@ nav.scrolled {
   bottom: 12px;
   right: 12px;
   background: rgba(15, 23, 26, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   color: #fff;
   padding: 8px 14px;
   border-radius: 50px;
@@ -539,8 +532,6 @@ nav.scrolled {
   width: 100%;
   height: 100%;
   background: rgba(11, 34, 38, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -653,12 +644,10 @@ nav.scrolled {
 
 .destination-card {
   background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(16px) saturate(1.8);
-  -webkit-backdrop-filter: blur(16px) saturate(1.8);
   border: 1px solid rgba(111, 121, 123, 0.15);
   border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 104, 116, 0.06);
+  box-shadow: 0 4px 16px rgba(15, 23, 26, 0.06);
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
@@ -666,7 +655,7 @@ nav.scrolled {
 
 .destination-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 50px rgba(0, 104, 116, 0.12);
+  box-shadow: 0 10px 28px rgba(15, 23, 26, 0.10);
   background: rgba(255, 255, 255, 0.94);
 }
 
@@ -724,15 +713,13 @@ nav.scrolled {
 
 .review-card {
   background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(16px) saturate(1.8);
-  -webkit-backdrop-filter: blur(16px) saturate(1.8);
   border: 1px solid rgba(111, 121, 123, 0.15);
   border-radius: 28px;
   padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 10px 40px rgba(0, 104, 116, 0.06);
+  box-shadow: 0 4px 16px rgba(15, 23, 26, 0.06);
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
@@ -751,7 +738,7 @@ nav.scrolled {
 
 .review-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 50px rgba(0, 104, 116, 0.12);
+  box-shadow: 0 10px 28px rgba(15, 23, 26, 0.10);
   background: rgba(255, 255, 255, 0.94);
 }
 
@@ -841,21 +828,19 @@ nav.scrolled {
 
 .highlight-card {
   background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(16px) saturate(1.8);
-  -webkit-backdrop-filter: blur(16px) saturate(1.8);
   border: 1px solid rgba(111, 121, 123, 0.15);
   border-radius: 24px;
   padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  box-shadow: 0 10px 40px rgba(0, 104, 116, 0.06);
+  box-shadow: 0 4px 16px rgba(15, 23, 26, 0.06);
   transition: var(--transition-smooth);
 }
 
 .highlight-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 50px rgba(0, 104, 116, 0.12);
+  box-shadow: 0 10px 28px rgba(15, 23, 26, 0.10);
   background: rgba(255, 255, 255, 0.94);
 }
 
@@ -939,15 +924,13 @@ nav.scrolled {
 
 .contact-info-panel {
   background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(16px) saturate(1.8);
-  -webkit-backdrop-filter: blur(16px) saturate(1.8);
   border: 1px solid rgba(111, 121, 123, 0.15);
   border-radius: 28px;
   padding: 36px;
   display: flex;
   flex-direction: column;
   gap: 22px;
-  box-shadow: 0 10px 40px rgba(0, 104, 116, 0.06);
+  box-shadow: 0 4px 16px rgba(15, 23, 26, 0.06);
 }
 
 .contact-info-row {
@@ -974,15 +957,13 @@ nav.scrolled {
 
 .contact-form-panel {
   background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(16px) saturate(1.8);
-  -webkit-backdrop-filter: blur(16px) saturate(1.8);
   border: 1px solid rgba(111, 121, 123, 0.15);
   border-radius: 28px;
   padding: 36px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 10px 40px rgba(0, 104, 116, 0.06);
+  box-shadow: 0 4px 16px rgba(15, 23, 26, 0.06);
 }
 
 .contact-form-panel label {
@@ -1036,37 +1017,16 @@ nav.scrolled {
 /* ─── SCROLL-REVEAL ANIMATION SYSTEM ─── */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translate3d(0, 28px, 0);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-.reveal-on-scroll.reveal-left {
-  transform: translate(-40px, 12px);
-}
-
-.reveal-on-scroll.reveal-right {
-  transform: translate(40px, 12px);
-}
-
-.reveal-on-scroll.is-visible {
-  opacity: 1;
-  transform: translate(0, 0);
-}
-
-/* Stagger children of a grid/row automatically when the parent becomes visible */
-.highlights-grid.is-visible .highlight-card,
-.destinations-grid.is-visible .destination-card,
-.reviews-grid.is-visible .review-card {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal-on-scroll.reveal-left  { transform: translate3d(-36px, 10px, 0); }
+.reveal-on-scroll.reveal-right { transform: translate3d(36px, 10px, 0); }
+.reveal-on-scroll.is-visible   { opacity: 1; transform: translate3d(0, 0, 0); }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-on-scroll {
-    transition: opacity 0.3s ease;
-    transform: none !important;
-  }
+  html { scroll-behavior: auto; }
+  .reveal-on-scroll { transition: opacity 0.3s ease; transform: none !important; }
 }
 
 /* ─── QUICK-SCAN INCLUSION CHIPS (SERVICES HERO) ─── */
@@ -1081,7 +1041,6 @@ nav.scrolled {
 .inclusion-chip-row .service-tag-pill {
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(111, 121, 123, 0.2);
-  backdrop-filter: blur(8px);
 }
 
 /* ─── SERVICES: VERTICAL PHASE TIMELINE ─── */
@@ -1264,9 +1223,6 @@ footer {
     height: 58px;
   }
   
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  
   #hero {
     padding-top: 100px;
     padding-bottom: 50px;
@@ -1280,7 +1236,7 @@ footer {
   
   .hero-logo-balanced {
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
   }
 
   .hero-text-content {
@@ -1323,4 +1279,54 @@ footer {
     width: 50px;
     height: 50px;
   }
+}
+
+/* ─── TABLET / IPAD NAV: hamburger kicks in earlier so links never cramp ─── */
+@media (max-width: 1080px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
+
+.destination-card img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.destination-card:hover img { transform: scale(1.07); }
+
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #25d366;
+  z-index: -1;
+  animation: whatsappPulse 2.6s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+}
+@keyframes whatsappPulse { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.8); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .whatsapp-float::before { display: none; } }
+
+
+/* ─── PERFORMANCE: skip rendering work for sections that are off-screen ─── */
+.section-wrap, footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* ─── MOBILE: lighter, whiter look (no tinted glows) + calmer motion ─── */
+@media (max-width: 768px) {
+  :root { --md-sys-color-surface: #ffffff; }
+  body { background-color: #ffffff; }
+  #hero, .page-hero-wrapper { background: none; }
+  .faded-bg-logo { display: none; }
+  .alt-surface { background: #fbfdfd; }
+  .hero-logo-balanced { filter: none; animation: none; }
+  .btn-expressive-primary { box-shadow: 0 2px 8px rgba(15, 23, 26, 0.12); }
+  .service-graphic-card, .destination-card, .review-card, .highlight-card,
+  .contact-info-panel, .contact-form-panel {
+    background: #ffffff;
+    border-color: rgba(15, 23, 26, 0.08);
+    box-shadow: 0 2px 10px rgba(15, 23, 26, 0.05);
+  }
+  .whatsapp-float { box-shadow: 0 3px 10px rgba(15, 23, 26, 0.2); }
+  .whatsapp-float::before { display: none; }
+  .reveal-on-scroll { transform: translate3d(0, 18px, 0); }
+  .reveal-on-scroll.reveal-left, .reveal-on-scroll.reveal-right { transform: translate3d(0, 18px, 0); }
+  .reveal-on-scroll.is-visible { transform: translate3d(0, 0, 0); }
 }
