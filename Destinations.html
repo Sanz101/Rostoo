@@ -60,6 +60,7 @@
     <div class="destinations-grid" id="destinationsGrid"></div>
   </div>
 </section>
+
 <!-- ─── CALL TO ACTION BAND ─── -->
 <section class="section-wrap" style="padding-top: 0;">
   <div class="cta-band reveal-on-scroll">
@@ -90,7 +91,103 @@
 
 <script src="main.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => renderDestinationsGrid('#destinationsGrid'));
+  /* ───────────────────────────────────────────────────────────────
+     DESTINATIONS — ALL IN ONE PLACE
+     Image filenames follow the D1, D2, D3 … pattern in order.
+  ─────────────────────────────────────────────────────────────── */
+
+  const destinations = [
+
+    /* ─── EXISTING DESTINATIONS ─── */
+    {
+      name: "Temple of the Tooth",
+      image: "images/D1.jpg",
+      description: "The sacred Sri Dalada Maligawa, home to a relic of the Buddha's tooth — Kandy's most iconic and spiritual landmark."
+    },
+    {
+      name: "Kandy Lake",
+      image: "images/D2.jpg",
+      description: "A picturesque man-made lake in the heart of Kandy, ideal for a scenic evening stroll with views of the temple."
+    },
+    {
+      name: "Nuwara Eliya",
+      image: "images/D3.jpg",
+      description: "The 'Little England' of Sri Lanka — cool tea country, colonial charm, Gregory Lake, and rolling green estates."
+    },
+    {
+      name: "Peradeniya Royal Botanical Gardens",
+      image: "images/D4.jpg",
+      description: "Sprawling gardens with an incredible orchid collection, giant Java fig trees, and peaceful palm avenues."
+    },
+    {
+      name: "Kitulgala Adventure Base",
+      image: "images/D5.jpg",
+      description: "The premier location for white-water rafting, rainforest trekking, and outdoor adventure sports along the Kelani River."
+    },
+
+    /* ─── NEW DESTINATIONS ─── */
+    {
+      name: "Dambulla Cave Temple",
+      image: "images/D6.jpg",
+      description: "A UNESCO World Heritage site with five magnificent caves filled with ancient Buddha statues and vibrant ceiling frescoes."
+    },
+    {
+      name: "Pinnawala Elephant Orphanage",
+      image: "images/D7.jpg",
+      description: "Watch rescued elephants bathe in the river and feed the calves — a world-famous family favourite."
+    },
+    {
+      name: "Sigiriya Rock Fortress",
+      image: "images/D8.jpg",
+      description: "An ancient palace and fortress complex sitting atop a massive 200-meter-high rock column, surrounded by stunning water gardens and frescoes."
+    },
+    {
+      name: "Ambuluwawa Tower",
+      image: "images/D9.jpg",
+      description: "Climb the iconic spiral tower for 360° views of misty mountains, tea estates, and lush biodiversity."
+    },
+    {
+      name: "Nelligala Temple",
+      image: "images/D10.jpg",
+      description: "A serene hilltop temple with a gleaming golden stupa and sweeping panoramas — ideal for photography and reflection."
+    },
+    {
+      name: "Sandagirisaya",
+      image: "images/D11.jpg",
+      description: "A peaceful hilltop shrine with a large Buddha statue overlooking the countryside — a hidden gem for spiritual seekers."
+    },
+    {
+      name: "Bahirawa Kanda",
+      image: "images/D12.jpg",
+      description: "Hike this sacred hill for a towering Buddha statue and stunning views over Kandy town and the surrounding hills."
+    },
+    {
+      name: "Cultural Dance Show",
+      image: "images/D13.jpg",
+      description: "Experience the energy of traditional Kandyan dance, drumming, and fire-walking — a vibrant evening of Sri Lankan heritage."
+    },
+    {
+      name: "Spice Garden",
+      image: "images/D14.jpg",
+      description: "Tour a working spice garden to learn about cinnamon, cardamom, and ayurvedic herbs — finished with an authentic Sri Lankan lunch."
+    }
+  ];
+
+  /* ─── RENDER ─── */
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.querySelector('#destinationsGrid');
+    if (!grid) return;
+
+    grid.innerHTML = destinations.map(dest => `
+      <div class="destination-card">
+        <img src="${dest.image}" alt="${dest.name}" class="destination-img" loading="lazy">
+        <div class="destination-info">
+          <h3 class="destination-name">${dest.name}</h3>
+          <p class="destination-desc">${dest.description}</p>
+        </div>
+      </div>
+    `).join('');
+  });
 </script>
 </body>
 </html>
