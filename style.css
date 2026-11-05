@@ -1351,7 +1351,7 @@ footer {
 }
 
 /* Desktop: blur ramps up and down smoothly instead of popping in */
-@media (min-width: 1025px) {
+@media (min-width: 0px) {
   .page-transition {
     opacity: 1;
     background: rgba(255, 255, 255, 0);
