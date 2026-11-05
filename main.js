@@ -155,11 +155,13 @@ document.addEventListener('click', (e) => {
   if (url.protocol !== location.protocol || url.host !== location.host) return; // external link
   if (url.pathname === location.pathname && url.search === location.search) return; // same page
 
-  e.preventDefault();
-  const menu = document.getElementById('mobileMenu');
-  if (menu) menu.classList.remove('open');
-  overlay.classList.add('is-leaving');
-  setTimeout(() => { window.location.href = url.href; }, 1);
+    e.preventDefault();
+  setTimeout(() => {
+    const menu = document.getElementById('mobileMenu');
+    if (menu) menu.classList.remove('open');
+    overlay.classList.add('is-leaving');
+  }, 140);
+  setTimeout(() => { window.location.href = url.href; }, 140 + 550);
 });
 
 // When the user presses the browser Back button, the old page can be restored
@@ -180,3 +182,28 @@ document.addEventListener('pointerup', (e) => {
     navigator.vibrate(10);
   }
 }, { passive: true });
+
+/* ─── SMOOTH PRESS FEEDBACK: keeps the pressed look visible for at least 160ms ─── */
+(function () {
+  const SEL = 'a, button, .hamburger, .image-group-preview, .whatsapp-float, .modal-close-btn';
+  const MIN_PRESS = 160;
+  const pressed = new Set();
+
+  document.addEventListener('pointerdown', (e) => {
+    const el = e.target.closest(SEL);
+    if (!el) return;
+    el.classList.add('is-pressed');
+    el._pressStart = performance.now();
+    pressed.add(el);
+  }, { passive: true });
+
+  function release() {
+    pressed.forEach((el) => {
+      const wait = Math.max(0, MIN_PRESS - (performance.now() - el._pressStart));
+      setTimeout(() => el.classList.remove('is-pressed'), wait);
+    });
+    pressed.clear();
+  }
+  document.addEventListener('pointerup', release, { passive: true });
+  document.addEventListener('pointercancel', release, { passive: true });
+})();
