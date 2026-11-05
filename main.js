@@ -7,11 +7,11 @@
 const ROSTO_DESTINATIONS = [
   { image: 'images/D1.jpg', name: 'Temple of the Sacred Tooth Relic', distance: 'Located right in Kandy (0 km)',
     description: "Sri Lanka's most sacred Buddhist shrine, nestled beside the scenic Kandy Lake, featuring gorgeous traditional architecture and rich cultural heritage." },
-  { image: 'images/D2.jpg', name: 'Sigiriya Rock Fortress', distance: 'Approx. 90 km from Kandy (2.5 hours drive)',
+  { image: 'images/D8.jpg', name: 'Sigiriya Rock Fortress', distance: 'Approx. 90 km from Kandy (2.5 hours drive)',
     description: 'An ancient palace and fortress complex sitting atop a massive 200-meter-high rock column, surrounded by stunning water gardens and frescoes.' },
   { image: 'images/D3.jpg', name: 'Nuwara Eliya & Tea Gardens', distance: 'Approx. 75 km from Kandy (2.5 hours drive)',
     description: "Known as 'Little England', featuring cascading waterfalls, misty green hills, and sprawling world-famous Ceylon tea plantations." },
-  { image: 'images/D4.jpg', name: 'Kitulgala Adventure Base', distance: 'Approx. 55 km from Kandy (1.5 hours drive)',
+  { image: 'images/D5.jpg', name: 'Kitulgala Adventure Base', distance: 'Approx. 55 km from Kandy (1.5 hours drive)',
     description: 'The premier location for white-water rafting, rainforest trekking, and outdoor adventure sports along the Kelani River.' }
   // Add more: { image: 'images/D5.jpg', name: '...', distance: '...', description: '...' },
 ];
