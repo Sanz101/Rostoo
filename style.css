@@ -1331,7 +1331,7 @@ footer {
   .reveal-on-scroll.is-visible { transform: translate3d(0, 0, 0); }
 }
 
-/* ─── PAGE TRANSITION (Apple-style progressive blur) ─── */
+/* ─── PAGE TRANSITION (iPhone-smooth, Apple-style blur) ─── */
 .page-transition {
   position: fixed;
   inset: 0;
@@ -1339,8 +1339,16 @@ footer {
   pointer-events: none;
   background: #ffffff;
   opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.32, 0.72, 0, 1);
-  animation: ptFadeIn 0.7s cubic-bezier(0.32, 0.72, 0, 1) both;
+  transition: opacity 0.55s cubic-bezier(0.32, 0.72, 0, 1);
+  /* own GPU layer so Safari doesn't repaint the page underneath */
+  will-change: opacity;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* "backwards" (not "both") lets the overlay release after the fade-in,
+     so the next fade-out can animate instead of snapping */
+  animation: ptFadeIn 0.7s cubic-bezier(0.32, 0.72, 0, 1) backwards;
 }
 @keyframes ptFadeIn { from { opacity: 1; } to { opacity: 0; } }
 
@@ -1350,18 +1358,21 @@ footer {
   pointer-events: all;
 }
 
-/* Desktop: blur ramps up and down smoothly instead of popping in */
+/* Blur ramps up and down smoothly.
+   min-width: 0px = blur on ALL devices (phones too).
+   Change to 1025px if you want the blur on desktop only. */
 @media (min-width: 0px) {
   .page-transition {
     opacity: 1;
     background: rgba(255, 255, 255, 0);
-    -webkit-backdrop-filter: blur(0px);
-    backdrop-filter: blur(0px);
+    /* "none" at rest so no full-screen blur layer sits on top of the page while you scroll */
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     transition:
       backdrop-filter 0.6s cubic-bezier(0.32, 0.72, 0, 1),
       -webkit-backdrop-filter 0.6s cubic-bezier(0.32, 0.72, 0, 1),
       background-color 0.6s cubic-bezier(0.32, 0.72, 0, 1);
-    animation: ptBlurIn 0.9s cubic-bezier(0.32, 0.72, 0, 1) both;
+    animation: ptBlurIn 0.9s cubic-bezier(0.32, 0.72, 0, 1) backwards;
   }
   @keyframes ptBlurIn {
     from {
@@ -1386,6 +1397,7 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .page-transition { display: none; }
 }
+
 /* ─── REMOVE TAP HIGHLIGHT BOX (iPhone gray / Android blue) ─── */
 a, button, .hamburger, .nav-brand-title, .nav-links a, .mobile-menu a,
 .whatsapp-float, .image-group-preview, .modal-close-btn {
@@ -1406,6 +1418,11 @@ button:focus:not(:focus-visible),
   -webkit-touch-callout: none;
 }
 
+/* iPhone: remove the tap delay so the press feedback starts instantly */
+a, button, .hamburger, .image-group-preview, .whatsapp-float {
+  touch-action: manipulation;
+}
+
 /* ─── TAP / PRESS FEEDBACK (smooth) ─── */
 .nav-brand-title, .nav-links a, .mobile-menu a, .hamburger, .nav-cta-btn,
 .btn-expressive-primary, .btn-expressive-secondary, .footer-links a,
@@ -1413,12 +1430,13 @@ button:focus:not(:focus-visible),
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
               opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
               background-color 0.25s ease,
-              box-shadow 0.25s ease;
+              box-shadow 0.25s ease,
+              color 0.25s ease;
 }
 
 /* Press in quickly, then release slowly (this is what makes it feel smooth) */
 .is-pressed {
-  transition-duration: 0.14s, 0.14s, 0.25s, 0.25s !important;
+  transition-duration: 0.14s, 0.14s, 0.25s, 0.25s, 0.25s !important;
 }
 
 .nav-brand-title.is-pressed,
