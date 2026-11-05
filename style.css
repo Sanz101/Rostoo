@@ -1406,58 +1406,32 @@ button:focus:not(:focus-visible),
   -webkit-touch-callout: none;
 }
 
-/* ─── TAP / PRESS FEEDBACK ─── */
-.nav-brand-title,
-.nav-links a,
-.mobile-menu a,
-.hamburger,
-.nav-cta-btn,
-.btn-expressive-primary,
-.btn-expressive-secondary,
-.footer-links a,
-.whatsapp-float,
-.image-group-preview,
-.modal-close-btn {
-  transition: transform 0.18s cubic-bezier(0.32, 0.72, 0, 1),
-              opacity 0.18s ease,
+/* ─── TAP / PRESS FEEDBACK (smooth) ─── */
+.nav-brand-title, .nav-links a, .mobile-menu a, .hamburger, .nav-cta-btn,
+.btn-expressive-primary, .btn-expressive-secondary, .footer-links a,
+.whatsapp-float, .image-group-preview, .modal-close-btn {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
               background-color 0.25s ease,
               box-shadow 0.25s ease;
 }
 
-/* Nav links, logo, menu items: shrink slightly + dim */
-.nav-brand-title:active,
-.nav-links a:active,
-.mobile-menu a:active,
-.footer-links a:active {
-  transform: scale(0.94);
-  opacity: 0.6;
+/* Press in quickly, then release slowly (this is what makes it feel smooth) */
+.is-pressed {
+  transition-duration: 0.14s, 0.14s, 0.25s, 0.25s !important;
 }
 
-/* Hamburger icon */
-.hamburger:active {
-  transform: scale(0.88);
-  opacity: 0.6;
-}
+.nav-brand-title.is-pressed,
+.nav-links a.is-pressed,
+.mobile-menu a.is-pressed,
+.footer-links a.is-pressed { transform: scale(0.93); opacity: 0.55; }
 
-/* Buttons: press in */
-.nav-cta-btn:active,
-.btn-expressive-primary:active,
-.btn-expressive-secondary:active {
-  transform: scale(0.95);
-  opacity: 0.85;
-}
+.hamburger.is-pressed { transform: scale(0.86); opacity: 0.55; }
 
-/* WhatsApp button, gallery previews, modal close */
-.whatsapp-float:active,
-.image-group-preview:active,
-.modal-close-btn:active {
-  transform: scale(0.94);
-}
+.nav-cta-btn.is-pressed,
+.btn-expressive-primary.is-pressed,
+.btn-expressive-secondary.is-pressed { transform: scale(0.95); opacity: 0.85; }
 
-/* Cards: tiny press when tapped */
-.destination-card:active,
-.review-card:active,
-.highlight-card:active,
-.service-graphic-card:active {
-  transform: scale(0.985);
-}
+.whatsapp-float.is-pressed,
+.image-group-preview.is-pressed,
+.modal-close-btn.is-pressed { transform: scale(0.94); }
