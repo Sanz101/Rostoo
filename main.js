@@ -139,3 +139,32 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(tick); } }, { passive: true });
   tick();
 });
+
+/* ─── PAGE TRANSITION (fade/blur out, then go to the next page) ─── */
+document.addEventListener('click', (e) => {
+  const overlay = document.getElementById('pageTransition');
+  const link = e.target.closest('a');
+  if (!overlay || !link) return;
+
+  const href = link.getAttribute('href');
+  if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+  if (link.target === '_blank' || link.hasAttribute('download')) return;
+  if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+  const url = new URL(link.href, location.href);
+  if (url.protocol !== location.protocol || url.host !== location.host) return; // external link
+  if (url.pathname === location.pathname && url.search === location.search) return; // same page
+
+  e.preventDefault();
+  const menu = document.getElementById('mobileMenu');
+  if (menu) menu.classList.remove('open');
+  overlay.classList.add('is-leaving');
+  setTimeout(() => { window.location.href = url.href; }, 5);
+});
+
+// When the user presses the browser Back button, the old page can be restored
+// still covered by the overlay. This uncovers it.
+window.addEventListener('pageshow', (e) => {
+  const overlay = document.getElementById('pageTransition');
+  if (e.persisted && overlay) overlay.classList.remove('is-leaving');
+});
