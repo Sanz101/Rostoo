@@ -168,3 +168,15 @@ window.addEventListener('pageshow', (e) => {
   const overlay = document.getElementById('pageTransition');
   if (e.persisted && overlay) overlay.classList.remove('is-leaving');
 });
+
+/* Lets iPhone Safari show the :active pressed state */
+document.addEventListener('touchstart', function () {}, { passive: true });
+
+/* ─── HAPTIC TAP FEEDBACK (Android only; iPhone Safari ignores it) ─── */
+document.addEventListener('pointerup', (e) => {
+  if (!('vibrate' in navigator)) return;
+  if (e.pointerType !== 'touch') return;
+  if (e.target.closest('a, button, .hamburger, .image-group-preview, .whatsapp-float, .modal-close-btn')) {
+    navigator.vibrate(10);
+  }
+}, { passive: true });
