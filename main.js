@@ -160,7 +160,7 @@ document.addEventListener('click', (e) => {
     const menu = document.getElementById('mobileMenu');
     if (menu) menu.classList.remove('open');
     overlay.classList.add('is-leaving');
-  }, 140);
+  }, 40);
   setTimeout(() => { window.location.href = url.href; }, 140 + 50);
 });
 
