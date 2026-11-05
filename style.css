@@ -1405,3 +1405,59 @@ button:focus:not(:focus-visible),
   user-select: none;
   -webkit-touch-callout: none;
 }
+
+/* ─── TAP / PRESS FEEDBACK ─── */
+.nav-brand-title,
+.nav-links a,
+.mobile-menu a,
+.hamburger,
+.nav-cta-btn,
+.btn-expressive-primary,
+.btn-expressive-secondary,
+.footer-links a,
+.whatsapp-float,
+.image-group-preview,
+.modal-close-btn {
+  transition: transform 0.18s cubic-bezier(0.32, 0.72, 0, 1),
+              opacity 0.18s ease,
+              background-color 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+/* Nav links, logo, menu items: shrink slightly + dim */
+.nav-brand-title:active,
+.nav-links a:active,
+.mobile-menu a:active,
+.footer-links a:active {
+  transform: scale(0.94);
+  opacity: 0.6;
+}
+
+/* Hamburger icon */
+.hamburger:active {
+  transform: scale(0.88);
+  opacity: 0.6;
+}
+
+/* Buttons: press in */
+.nav-cta-btn:active,
+.btn-expressive-primary:active,
+.btn-expressive-secondary:active {
+  transform: scale(0.95);
+  opacity: 0.85;
+}
+
+/* WhatsApp button, gallery previews, modal close */
+.whatsapp-float:active,
+.image-group-preview:active,
+.modal-close-btn:active {
+  transform: scale(0.94);
+}
+
+/* Cards: tiny press when tapped */
+.destination-card:active,
+.review-card:active,
+.highlight-card:active,
+.service-graphic-card:active {
+  transform: scale(0.985);
+}
