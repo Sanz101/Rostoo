@@ -161,7 +161,7 @@ document.addEventListener('click', (e) => {
     if (menu) menu.classList.remove('open');
     overlay.classList.add('is-leaving');
   }, 140);
-  setTimeout(() => { window.location.href = url.href; }, 140 + 550);
+  setTimeout(() => { window.location.href = url.href; }, 140 + 50);
 });
 
 // When the user presses the browser Back button, the old page can be restored
