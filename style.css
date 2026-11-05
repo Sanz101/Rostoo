@@ -1386,3 +1386,22 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .page-transition { display: none; }
 }
+/* ─── REMOVE TAP HIGHLIGHT BOX (iPhone gray / Android blue) ─── */
+a, button, .hamburger, .nav-brand-title, .nav-links a, .mobile-menu a,
+.whatsapp-float, .image-group-preview, .modal-close-btn {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hide the focus box after a tap or click, but keep it for keyboard users */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+.hamburger:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Stop the logo and nav text from being selected when tapped */
+.nav-brand-title, .nav-links a, .mobile-menu a, .hamburger {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
