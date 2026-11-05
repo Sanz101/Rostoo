@@ -159,7 +159,7 @@ document.addEventListener('click', (e) => {
   const menu = document.getElementById('mobileMenu');
   if (menu) menu.classList.remove('open');
   overlay.classList.add('is-leaving');
-  setTimeout(() => { window.location.href = url.href; }, 5);
+  setTimeout(() => { window.location.href = url.href; }, 1);
 });
 
 // When the user presses the browser Back button, the old page can be restored
