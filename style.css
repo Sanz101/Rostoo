@@ -1454,22 +1454,30 @@ a, button, .hamburger, .image-group-preview, .whatsapp-float {
 .image-group-preview.is-pressed,
 .modal-close-btn.is-pressed { transform: scale(0.94); }
 
-/* ─── LOADING GIF IN PAGE TRANSITION ─── */
+/* ─── LOADING ANIMATION IN PAGE TRANSITION ─── */
 .pt-loader {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 90px;
+  width: 190px;
   height: auto;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: opacity 0.3s ease;
-  mix-blend-mode: multiply;   /* makes the GIF's white background disappear */
   pointer-events: none;
   -webkit-user-drag: none;
+  transition: opacity 0.2s ease;
+  animation: ptLoaderOut 1s ease backwards;
+}
+@keyframes ptLoaderOut {
+  0%, 35% { opacity: 1; }
+  100%    { opacity: 0; }
 }
 
 .page-transition.is-leaving .pt-loader {
   opacity: 1;
-  transition-delay: 0.25s;    /* appears just after the blur starts */
+  animation: none;
+}
+
+@media (max-width: 768px) {
+  .pt-loader { width: 150px; }
 }
